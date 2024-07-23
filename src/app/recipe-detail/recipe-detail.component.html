@@ -1,0 +1,29 @@
+<div *ngIf="recipe$ | async as recipe" class="recipe-detail">
+    <mat-card>
+        <img mat-card-image [src]="recipe.strMealThumb" alt="{{ recipe.strMeal }}">
+        <mat-card-header>
+            <mat-card-title>{{ recipe.strMeal }}</mat-card-title>
+            <mat-card-subtitle>{{ recipe.strCategory }} | {{ recipe.strArea }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-divider></mat-divider>
+            <h3>Ingredients</h3>
+            <mat-list>
+                <mat-list-item *ngFor="let item of ingredients">
+                    <span mat-line>{{ item.ingredient }}</span>
+                    <span mat-line>{{ item.measure }}</span>
+                </mat-list-item>
+            </mat-list>
+            <mat-divider></mat-divider>
+            <h3>Instructions</h3>
+            <ol>
+                <li *ngFor="let step of recipe.strInstructions.split('\r\n')">
+                    {{ step }}
+                </li>
+            </ol>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" [routerLink]="['/recipes']">Back to Recipes</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

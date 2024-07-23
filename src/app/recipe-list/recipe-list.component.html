@@ -1,0 +1,11 @@
+<div class="recipe-list">
+    <div *ngFor="let recipe of recipes$ | async" class="recipe-card">
+        <mat-card>
+            <img mat-card-image [src]="recipe.strMealThumb" alt="{{ recipe.strMeal }}">
+            <mat-card-title>{{ recipe.strMeal }}</mat-card-title>
+            <mat-card-actions>
+                <button mat-button [routerLink]="['/recipes', recipe.idMeal]">View Recipe</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

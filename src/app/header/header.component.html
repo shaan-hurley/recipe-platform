@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+    <span class="logo">Recipe Platform</span>
+    <span class="spacer"></span>
+    <nav>
+        <a mat-button routerLink="/">Home</a>
+        <a mat-button routerLink="/recipes">Recipes</a>
+    </nav>
+    <span class="spacer"></span>
+    <app-search-bar (search)="onSearch($event)"></app-search-bar>
+</mat-toolbar>

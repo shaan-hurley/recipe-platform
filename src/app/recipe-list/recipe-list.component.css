@@ -1,0 +1,12 @@
+.recipe-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    padding: 10px;
+}
+
+.recipe-card {
+    width: 300px;
+    padding: 10px;
+}

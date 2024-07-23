@@ -1,0 +1,7 @@
+<form [formGroup]="form" (ngSubmit)="onSearch()">
+    <mat-form-field>
+        <mat-label>Search Recipes</mat-label>
+        <input matInput formControlName="searchQuery" placeholder="Enter recipe name">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Search</button>
+</form>
