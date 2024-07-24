@@ -1,0 +1,35 @@
+.landing-page {
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.featured-recipes,
+.meal-categories {
+    margin-bottom: 40px;
+}
+
+.recipe-list,
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.recipe-card,
+.category-card {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px;
+}
+
+@media (max-width: 768px) {
+
+    .recipe-card,
+    .category-card {
+        max-width: 100%;
+    }
+}

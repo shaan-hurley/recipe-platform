@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
+import { RecipeCardComponent } from '../recipe-card/recipe-card.component';
 
 @Component({
   selector: 'app-recipe-list',
@@ -17,7 +18,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     MatCardModule,
     MatButtonModule,
-    RouterModule
+    RouterModule,
+    RecipeCardComponent,
   ]
 })
 export class RecipeListComponent implements OnInit {

@@ -1,0 +1,24 @@
+.recipe-card {
+    width: 300px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.recipe-card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.recipe-card mat-card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.recipe-card mat-card-actions {
+    display: flex;
+    justify-content: center;
+}

@@ -1,5 +1,20 @@
-<div class="landing-container">
-    <h1>this is working</h1>
-    <div class="recipes">
-    </div>
+<div class="landing-page">
+    <section class="featured-recipes">
+        <h2>Featured Recipes</h2>
+        <div class="recipe-list">
+            <app-recipe-card *ngFor="let recipe of featuredRecipes$ | async" [recipe]="recipe"></app-recipe-card>
+        </div>
+    </section>
+
+    <section class="meal-categories">
+        <h2>Meal Categories</h2>
+        <div class="category-list">
+            <div *ngFor="let category of mealCategories$ | async" class="category-card">
+                <mat-card>
+                    <img mat-card-image [src]="category.strCategoryThumb" alt="{{ category.strCategory }}">
+                    <mat-card-title>{{ category.strCategory }}</mat-card-title>
+                </mat-card>
+            </div>
+        </div>
+    </section>
 </div>

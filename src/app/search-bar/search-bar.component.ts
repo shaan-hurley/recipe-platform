@@ -1,9 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-bar',
@@ -12,24 +11,30 @@ import { MatButtonModule } from '@angular/material/button';
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule
+    MatIconModule,
+    ReactiveFormsModule
   ]
 })
 export class SearchBarComponent {
-  @Output() search = new EventEmitter<string>();
-  form: FormGroup;
+  searchControl = new FormControl('');
 
-  constructor(private fb: FormBuilder) {
-    this.form = this.fb.group({
-      searchQuery: ['']
+  @Output() search = new EventEmitter<string>();
+
+  constructor() {
+    this.searchControl.valueChanges.pipe(
+      debounceTime(300), // Adjust the debounce time as needed
+      distinctUntilChanged()
+    ).subscribe(value => {
+      if (value !== null) {
+        this.search.emit(value);
+      }
     });
   }
 
-  onSearch() {
-    const query = this.form.get('searchQuery')?.value;
-    this.search.emit(query);
+  onSearch(): void {
+    const value = this.searchControl.value;
+    if (value !== null) {
+      this.search.emit(value);
+    }
   }
 }
