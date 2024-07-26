@@ -25,7 +25,7 @@ Welcome to the Recipe Platform, an Angular-based web application for browsing an
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-repo/recipe-platform.git
+   git clone https://github.com/shaan-hurley/recipe-platform
    cd recipe-platform
    ```
 
