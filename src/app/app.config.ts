@@ -14,7 +14,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideAnimations(),
-    provideHttpClient(),  // Use provideHttpClient instead of HttpClientModule
+    provideHttpClient(),
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,

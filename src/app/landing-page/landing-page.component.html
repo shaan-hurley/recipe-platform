@@ -1,9 +1,14 @@
 <div class="landing-page">
+    <section class="filter-section">
+        <app-filters (filter)="onFilter($event)"></app-filters>
+    </section>
+
     <section class="featured-recipes">
         <h2>Featured Recipes</h2>
         <div class="recipe-list">
             <app-recipe-card *ngFor="let recipe of featuredRecipes$ | async" [recipe]="recipe"></app-recipe-card>
         </div>
+        <app-error *ngIf="error">{{ error }}</app-error>
     </section>
 
     <section class="meal-categories">

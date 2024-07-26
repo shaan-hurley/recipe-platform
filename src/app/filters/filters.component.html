@@ -1,1 +1,25 @@
-<p>filters works!</p>
+<div class="filter-container">
+    <div class="filter-category">
+        <button mat-button *ngFor="let category of categories" (click)="onFilterCategory(category)"
+            [class.active]="selectedCategory === category">
+            {{ category }}
+        </button>
+    </div>
+    <div class="filter-area">
+        <mat-form-field appearance="fill">
+            <mat-label>Area</mat-label>
+            <mat-select (selectionChange)="onFilterArea($event.value)" [value]="selectedArea">
+                <mat-option *ngFor="let area of areas$ | async" [value]="area">{{ area }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="filter-ingredient">
+        <mat-form-field appearance="fill">
+            <mat-label>Ingredient</mat-label>
+            <mat-select (selectionChange)="onFilterIngredient($event.value)" [value]="selectedIngredient">
+                <mat-option *ngFor="let ingredient of ingredients$ | async" [value]="ingredient">{{ ingredient
+                    }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>

@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { RecipeCardComponent } from '../recipe-card/recipe-card.component';
+import { FiltersComponent } from '../filters/filters.component';
 import { ErrorComponent } from '../error/error.component';
 
 @Component({
@@ -21,6 +22,7 @@ import { ErrorComponent } from '../error/error.component';
     MatButtonModule,
     RouterModule,
     RecipeCardComponent,
+    FiltersComponent,
     ErrorComponent
   ]
 })
@@ -47,5 +49,16 @@ export class RecipeListComponent implements OnInit {
         return meals;
       })
     );
+  }
+
+
+  onFilter(category: string): void {
+    if (category === 'All') {
+      this.recipes$ = this.fetchRecipes();
+    } else {
+      this.recipes$ = this.http.get<any>(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`).pipe(
+        map(response => response.meals)
+      );
+    }
   }
 }

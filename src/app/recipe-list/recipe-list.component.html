@@ -1,7 +1,9 @@
 <div *ngIf="error; else recipeList">
     <app-error></app-error>
 </div>
+
 <ng-template #recipeList>
+    <app-filters (filter)="onFilter($event)"></app-filters>
     <div class="recipe-list">
         <app-recipe-card *ngFor="let recipe of recipes$ | async" [recipe]="recipe"></app-recipe-card>
     </div>

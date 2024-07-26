@@ -1,0 +1,28 @@
+.filter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.filter-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.filter-categories button {
+    font-size: 14px;
+}
+
+.filter-categories .selected {
+    background-color: #3f51b5;
+    color: white;
+}
+
+.filter-dropdowns {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
