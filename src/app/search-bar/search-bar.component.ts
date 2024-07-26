@@ -22,7 +22,7 @@ export class SearchBarComponent {
 
   constructor() {
     this.searchControl.valueChanges.pipe(
-      debounceTime(300), // Adjust the debounce time as needed
+      debounceTime(300),
       distinctUntilChanged()
     ).subscribe(value => {
       if (value !== null) {

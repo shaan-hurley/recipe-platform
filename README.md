@@ -1,27 +1,56 @@
-# RecipePlatform
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.1.
+# Recipe Platform
 
-## Development server
+Welcome to the Recipe Platform, an Angular-based web application for browsing and managing recipes
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Features
 
-## Code scaffolding
+- **Search Functionality:** Real-time search for recipes with a responsive search bar.
+- **Recipe List:** Display a list of recipes with details like images and titles.
+- **Recipe Details:** Detailed view of each recipe including ingredients and instructions.
+- **Error Handling:** Display user-friendly error messages for search results and other operations.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Technologies Used
 
-## Build
+- **Angular:** Framework for building the web application.
+- **Angular Material:** For UI components.
+- **RxJS:** Reactive programming library for handling async operations.
+- **CSS:** For styling.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Prerequisites
 
-## Running unit tests
+- **Node.js:** Version 18.x
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Installation
 
-## Running end-to-end tests
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/your-repo/recipe-platform.git
+   cd recipe-platform
+   ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2. **Install Dependencies:**
+   ```bash
+   npm install 
+   ```
 
-## Further help
+3. **Start the Development Server:**
+   ```bash
+   ng serve
+   ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Usage
+
+1. **Navigate to the Application:**
+   Open your browser and go to `http://localhost:4200`.
+
+2. **Search Recipes:**
+   Use the search bar to find recipes
+
+3. **View Recipe Details:**
+   Click on view detail button to view detailed information including ingredients and instructions.
+
+4. **Error Handling:**
+   If a search query yields no results, a "No items found" message will be displayed.
+
+

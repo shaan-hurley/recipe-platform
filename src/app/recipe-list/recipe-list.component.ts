@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { RecipeCardComponent } from '../recipe-card/recipe-card.component';
+import { ErrorComponent } from '../error/error.component';
 
 @Component({
   selector: 'app-recipe-list',
@@ -20,16 +21,18 @@ import { RecipeCardComponent } from '../recipe-card/recipe-card.component';
     MatButtonModule,
     RouterModule,
     RecipeCardComponent,
+    ErrorComponent
   ]
 })
 export class RecipeListComponent implements OnInit {
   recipes$!: Observable<any[]>;
+  error = false;
 
   constructor(private http: HttpClient, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.recipes$ = this.route.queryParams.pipe(
-      switchMap(params => this.fetchRecipes(params['search']))
+      switchMap(params => this.fetchRecipes(params['search'] || ''))
     );
   }
 
@@ -38,7 +41,11 @@ export class RecipeListComponent implements OnInit {
       ? `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`
       : 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
     return this.http.get<any>(url).pipe(
-      map(response => response.meals)  // Extract the array of meals
+      map(response => response.meals || []),
+      map(meals => {
+        this.error = meals.length === 0;
+        return meals;
+      })
     );
   }
 }

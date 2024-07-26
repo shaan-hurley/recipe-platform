@@ -1,3 +1,8 @@
-<div class="recipe-list">
-    <app-recipe-card *ngFor="let recipe of recipes$ | async" [recipe]="recipe"></app-recipe-card>
+<div *ngIf="error; else recipeList">
+    <app-error></app-error>
 </div>
+<ng-template #recipeList>
+    <div class="recipe-list">
+        <app-recipe-card *ngFor="let recipe of recipes$ | async" [recipe]="recipe"></app-recipe-card>
+    </div>
+</ng-template>
