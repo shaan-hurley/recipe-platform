@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, catchError } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -50,15 +50,25 @@ export class RecipeListComponent implements OnInit {
       })
     );
   }
-
-
-  onFilter(category: string): void {
-    if (category === 'All') {
-      this.recipes$ = this.fetchRecipes();
-    } else {
-      this.recipes$ = this.http.get<any>(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`).pipe(
-        map(response => response.meals)
-      );
+  onFilter(filter: { type: string, value: string }): void {
+    let url = '';
+    if (filter.type === 'category') {
+      url = filter.value === 'All'
+        ? 'https://www.themealdb.com/api/json/v1/1/search.php?s='
+        : `https://www.themealdb.com/api/json/v1/1/filter.php?c=${filter.value}`;
+    } else if (filter.type === 'area') {
+      url = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${filter.value}`;
+    } else if (filter.type === 'ingredient') {
+      url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${filter.value}`;
     }
+
+    this.recipes$ = this.http.get<any>(url).pipe(
+      map(response => response.meals),
+      catchError(err => {
+        this.error = true;
+        return of([]);
+      })
+    );
   }
+
 }
